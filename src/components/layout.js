@@ -1,72 +1,54 @@
 import React from "react"
 import { Link } from "gatsby"
 
-import { rhythm, scale } from "../utils/typography"
+import { rhythm } from "../utils/typography"
+import Helmet from "react-helmet"
 
 class Layout extends React.Component {
   render() {
     const { location, title, children } = this.props
     const rootPath = `${__PATH_PREFIX__}/`
-    let header
+    let header    
 
     if (location.pathname === rootPath) {
       header = (
-        <h1
-          style={{
-            ...scale(1.5),
-            marginBottom: rhythm(1.5),
-            marginTop: 0,
-          }}
-        >
-          <Link
-            style={{
-              boxShadow: `none`,
-              textDecoration: `none`,
-              color: `inherit`,
-            }}
-            to={`/`}
-          >
-            {title}
-          </Link>
-        </h1>
+        <>
+          {/* <i className="material-icons menu">menu</i> */}
+          <h4 className="Title">
+            <Link to={`/`} className="link_home">
+              {title}
+            </Link>
+          </h4>
+        </>
       )
     } else {
       header = (
-        <h3
-          style={{
-            fontFamily: `Montserrat, sans-serif`,
-            marginTop: 0,
-          }}
-        >
-          <Link
-            style={{
-              boxShadow: `none`,
-              textDecoration: `none`,
-              color: `inherit`,
-            }}
-            to={`/`}
-          >
-            {title}
-          </Link>
-        </h3>
+        <>
+          <h4 className="Title">
+            <Link to={`/`} className="link_home">
+              <i className="material-icons home">home</i>              
+            </Link>
+          </h4>
+        </> 
       )
     }
     return (
-      <div
-        style={{
-          marginLeft: `auto`,
-          marginRight: `auto`,
-          maxWidth: rhythm(24),
-          padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
-        }}
+      <div 
+        className={'Layout'+(location.pathname === rootPath? ' root':'')}
       >
-        <header>{header}</header>
-        <main>{children}</main>
-        <footer>
+        <div className='AppHeader'>
+          {header}
+        </div>
+        <main style={{maxWidth: rhythm(36)}}>{children}</main>
+        <div className="AppFooter">
           © {new Date().getFullYear()}, Built with
           {` `}
           <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </footer>
+        </div>        
+        <Helmet>
+          <link href="https://fonts.googleapis.com/css?family=Saira+Semi+Condensed&display=swap" rel="stylesheet" />
+          <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"></link>
+        </Helmet>
       </div>
     )
   }

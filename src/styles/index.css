@@ -1,0 +1,37 @@
+html, body, #___gatsby, #gatsby-focus-wrapper {
+  background-color: var(--color-background);
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+html, body, h1, h2, h3, h4, h5 {
+  font-family: 'Saira Semi Condensed', sans-serif;
+}
+
+
+h1, h2 {
+  color: var(--text-primary);
+}
+
+h3, h4 {
+  color: var(--text-secondary);
+}
+
+div, p {
+  color: var(--text-quiet);
+}
+
+:root {
+  --color-primary: #457394;
+  --color-secondary:  #FA8334;
+  --color-success: #3C8765;
+  --color-warn: #D1C760;
+  --color-error: #B7282F;
+  --color-background: #0A131A;
+
+  --text-primary: rgba(255,255,255,1);
+  --text-secondary: rgba(255,255,255,.87);
+  --text-quiet: rgba(255,255,255,.6);
+  --text-disabled: rgba(255,255,255.4);
+}

@@ -1,0 +1,76 @@
+.social-media-link {
+  box-shadow: none;
+}
+
+.social-media-link .github_icon {
+  filter: brightness(200%);
+  transition: filter 0.15s ease-in-out;
+  cursor: pointer;
+}
+
+.social-media-link .github_icon:hover {
+  filter: brightness(400%);
+  transition: filter .15s ease-in-out;
+}
+
+.post h2, .post h3 {
+  text-transform: uppercase;
+}
+
+.post ul, .post ol {
+  margin-left: 40px;
+}
+
+.post ol {
+  list-style-position: outside;
+}
+
+.post ol li {
+  padding-left: 12px;
+}
+
+.post .gatsby-resp-image-wrapper {
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
+
+.post .gatsby-highlight {
+  background-color: black;
+  padding: 16px;
+  border-radius: 4px;
+}
+
+.post .gatsby-highlight pre.language-bash::before {
+  content: "$";
+  user-select: none;
+  margin-right: 8px;
+}
+
+.post code.language-text {
+  color: var(--color-secondary);
+}
+
+.post .gatsby-highlight pre.language-javascript {
+  color: rgb(219, 93, 93);
+}
+
+.post .gatsby-highlight pre.language-javascript .punctuation,
+  .post .gatsby-highlight pre.language-javascript .operator {
+  color: rgba(255,255,255,.7);
+}
+
+.post .gatsby-highlight pre.language-javascript .keyword, .interpolation-punctuation.punctuation{
+  color: rgb(157, 108, 185)!important;
+}
+
+.post .gatsby-highlight pre.language-javascript .function{
+  color: rgb(89, 155, 199);
+}
+
+.post .gatsby-highlight pre.language-javascript .string{
+  color: rgba(117, 161, 113, 0.993);
+}
+
+.post .gatsby-highlight pre.language-javascript .number{
+  color: rgb(235, 163, 68);
+}

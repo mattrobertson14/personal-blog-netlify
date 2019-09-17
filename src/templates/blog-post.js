@@ -1,5 +1,6 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
+import Image from "gatsby-image"
 
 import Bio from "../components/bio"
 import Layout from "../components/layout"
@@ -10,6 +11,7 @@ class BlogPostTemplate extends React.Component {
   render() {
     const post = this.props.data.markdownRemark
     const siteTitle = this.props.data.site.siteMetadata.title
+    const { github_icon } = this.props.data
     const { previous, next } = this.props.pageContext
 
     return (
@@ -18,7 +20,7 @@ class BlogPostTemplate extends React.Component {
           title={post.frontmatter.title}
           description={post.frontmatter.description || post.excerpt}
         />
-        <article>
+        <article className="post">
           <header>
             <h1
               style={{
@@ -37,6 +39,24 @@ class BlogPostTemplate extends React.Component {
             >
               {post.frontmatter.date}
             </p>
+            {post.frontmatter.github_link && 
+              <a href={post.frontmatter.github_link} className="social-media-link" target="_">
+                <Image
+                  fixed={github_icon.childImageSharp.fixed}
+                  alt='github_icon'
+                  style={{
+                    marginRight: rhythm(1 / 2),
+                    marginBottom: 0,
+                    minWidth: 50,
+                    borderRadius: `100%`,
+                  }}
+                  imgStyle={{
+                    borderRadius: `50%`,
+                  }}
+                  className="github_icon"
+                />
+              </a>
+            }
           </header>
           <section dangerouslySetInnerHTML={{ __html: post.html }} />
           <hr
@@ -84,6 +104,13 @@ export default BlogPostTemplate
 
 export const pageQuery = graphql`
   query BlogPostBySlug($slug: String!) {
+    github_icon: file(absolutePath: { regex: "/github-icon.png/" }) {
+      childImageSharp {
+        fixed(width: 50, height: 50) {
+          ...GatsbyImageSharpFixed
+        }
+      }
+    }
     site {
       siteMetadata {
         title
@@ -98,6 +125,7 @@ export const pageQuery = graphql`
         title
         date(formatString: "MMMM DD, YYYY")
         description
+        github_link
       }
     }
   }
